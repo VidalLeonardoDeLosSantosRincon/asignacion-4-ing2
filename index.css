@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+header {
+    background-color:midnightblue; 
+    color:white; 
+    min-height:60px; 
+    width: 100%;
+    padding:10px 25px; 
+    margin-top: -100px;
+    position: fixed;
+    z-index: 1000000;
+    border-bottom: 0.5px solid white;
+    box-shadow: 2px 2px 20px lightgray;
+
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+}
+
+.provinces-container {
+    margin:0 auto; 
+    width:60%;
+    margin-top: 100px;
+    margin-bottom: 200px;
+}
+
+.provinces-container h2 {
+    font-weight: 300;
+    margin-bottom:10px;
+    font-size: 28px;
+}
+
+.provinces-container table {
+    border: none;
+}
+
+.provinces-container table tbody tr td {
+    padding:10px;
+    border: none;
+    border-bottom: 0.5px solid lightgray;
+    border-right: 0.5px solid lightgray;
+}
+
+.provinces-container table tbody tr.province-row td {
+    width:250px;
+    background-color:midnightblue; 
+    color:white; 
+    text-align:center; 
+    font-size:22px;
+    padding:20px;
+}
+
+.provinces-container table tbody tr td.is-main {
+    background-color: dodgerblue;
+    color:white;
+}
