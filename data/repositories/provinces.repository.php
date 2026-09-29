@@ -2,7 +2,6 @@
 require_once __DIR__ . '/../models/city.model.php';
 require_once __DIR__ . '/../models/province.model.php';
 
-
 class PronvinceRepository 
 {
     function __construct(private PDO $connection)
@@ -10,18 +9,27 @@ class PronvinceRepository
         
     }
 
-    public function getAll(): array
+    public function getAll(string $searchTerm = ""): array
     {
-        $stmt = $this->connection->query(
-            "SELECT 
+        $query = "SELECT 
                 p.Id AS ProvinceId,
                 p.Name AS ProvinceName,
                 c.Id AS CityId,
                 c.Name AS CityName,
                 c.IsMain AS CityIsMain
             FROM province p
-            JOIN city c ON (p.Id = c.ProvinceId)"
-        );
+            JOIN city c ON (p.Id = c.ProvinceId)
+            WHERE :search = ''
+                OR (
+                    LOWER(p.Name) LIKE :search
+                    OR LOWER(c.Name) LIKE :search
+                ) 
+            ";
+
+        $stmt = $this->connection->prepare($query);
+
+        $search = '%' . strtolower($searchTerm) . '%';
+        $stmt->execute(["search" => $search]);
 
         $provinces = [];
 

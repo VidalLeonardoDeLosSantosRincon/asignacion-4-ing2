@@ -29,6 +29,63 @@ header {
     margin-bottom: 200px;
 }
 
+.provinces-container .search-container { 
+    width:100%;
+    margin:30px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.provinces-container .search-container .search-box {
+    width:40%;
+}
+
+.provinces-container .search-container .search-box form {
+    width:100%;
+    display: flex;
+    gap:10px;
+}
+
+.provinces-container .search-container .search-box form input { 
+    flex: 1; 
+    padding: 15px; 
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+.provinces-container .search-container .search-box form input:focus {
+    outline: 2px solid dodgerblue;
+}
+
+.provinces-container .search-container .search-box form button { 
+    padding: 15px 16px; 
+    cursor: pointer; 
+    font-size: 16px;
+    background-color: dodgerblue;
+    color:white;
+    border-radius: 5px;
+    border: none;
+    box-sizing: border-box;
+}
+
+.provinces-container .search-container .search-box form button:disabled {
+    color:gray;
+    background-color: lightgray;
+}
+
+.provinces-container .search-container .search-box form button:hover {
+    outline: 2px solid black;
+    opacity: 0.8;
+}
+
+.provinces-container .search-container .search-box form button#btn-cancel {
+    background-color: orange;
+}
+
 .provinces-container h2 {
     font-weight: 300;
     margin-bottom:10px;
