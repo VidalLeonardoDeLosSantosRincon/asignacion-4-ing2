@@ -1,0 +1,10 @@
+# 1. Deshabilitar la navegación pública de directorios
+Options -Indexes
+
+# 2. Denegar el acceso a ABSOLUTAMENTE TODO por defecto
+Require all denied
+
+# 3. Permitir ÚNICAMENTE los archivos especificados (Lista Blanca)
+<FilesMatch "^(index\.php|\.(css|js|png|jpg|jpeg|svg|ico|webp))$">
+    Require all granted
+</FilesMatch>
