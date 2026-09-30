@@ -4,9 +4,17 @@
 
     $repo = new PronvinceRepository($pdo);
 
-    $search = $_GET['search'] ?? '';
+    $search = trim($_GET['search'] ?? '');
     $validSearch = !empty($search);
     $data = $validSearch ? $repo->getAll($search) : $repo->getAll();
+
+    $provincesCount = isset($data)? count($data) : 0;
+    $citiesCount = 0;
+
+    foreach($data as $key => $d) {
+        $cities = $d->cities;
+        $citiesCount += isset($cities)? count($cities) : 0;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,6 +46,12 @@
             </div>
         </div>
         <h2>Provincias y sus cuidades</h2>
+        <h4 style="color:gray;">
+            Provincias: <?= $provincesCount ?>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            Ciudades: <?= $citiesCount ?>
+        </h4>
+        <br/>
         <table border="1" cellpadding="8" cellspacing="0" style="width:100%;">
             <tbody>
                 <?php foreach ($data as $key => $d): ?>
@@ -71,11 +85,11 @@
                             border-radius:10px;
                             background-color: rgba(0, 0, 0, 0.05);
                             text-align:center;
-                            font-weight:300;
-                            font-size:24px;
+                            font-size:20px;
                             padding:25px;
                         ">
-                            <b>Sin resultados para la busqueda: "<?=  $search ?>"</b>
+                            <span style="font-weight:300;">Sin resultados para la busqueda:</span>
+                            <b>"<?=  $search ?>"</b>
                         </td>
                     </tr>
                 <?php endif; ?>
