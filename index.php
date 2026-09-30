@@ -1,4 +1,5 @@
 <?php 
+    require_once __DIR__ . '/app.config.php';
     require_once __DIR__ . '/config/connection.php';
     require_once __DIR__ . '/data/repositories/provinces.repository.php';
 
